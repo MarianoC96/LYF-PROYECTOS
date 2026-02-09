@@ -123,17 +123,17 @@ const DesktopCanvas = () => {
 
     if (error) {
         return (
-            <div className="h-screen w-full bg-neutral-900 flex items-center justify-center text-neutral-500">
+            <div className="h-screen w-full bg-slate-50 flex items-center justify-center text-slate-500">
                 <p>Visual assets not available</p>
             </div>
         );
     }
 
     return (
-        <div ref={containerRef} className="h-[400vh] relative bg-neutral-950">
+        <div ref={containerRef} className="h-[400vh] relative bg-slate-50">
             <div className="sticky top-0 h-screen w-full overflow-hidden">
                 {isLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center z-10 bg-neutral-950 text-white font-mono text-sm">
+                    <div className="absolute inset-0 flex items-center justify-center z-10 bg-slate-50 text-slate-900 font-mono text-sm">
                         Loading System... {Math.round((loadedCount / (frames.length || 1)) * 100)}%
                     </div>
                 )}
@@ -156,12 +156,12 @@ export default function CanvasHero() {
     }, []);
 
     if (isMobile === null) {
-        return <div className="h-screen w-full bg-neutral-950" />;
+        return <div className="h-screen w-full bg-slate-50" />;
     }
 
     if (isMobile) {
         return (
-            <div className="h-screen w-full relative bg-neutral-950 overflow-hidden">
+            <div className="h-screen w-full relative bg-slate-50 overflow-hidden">
                 <video
                     autoPlay
                     muted

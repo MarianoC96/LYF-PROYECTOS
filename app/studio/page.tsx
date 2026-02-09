@@ -12,23 +12,23 @@ export default function StudioPage() {
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 font-outfit">
                         Studio
                     </h1>
-                    <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-md leading-relaxed">
+                    <p className="text-xl text-slate-600 max-w-md leading-relaxed">
                         Somos un equipo de ingenieros y diseñadores obsesionados con la calidad técnica y la claridad visual.
                     </p>
                 </div>
 
                 <div className="space-y-32">
                     <section>
-                        <h2 className="text-sm uppercase tracking-wider mb-6 text-neutral-400 font-mono">Enfoque</h2>
+                        <h2 className="text-sm uppercase tracking-wider mb-6 text-slate-400 font-mono">Enfoque</h2>
                         <p className="text-2xl md:text-3xl leading-snug font-light">
                             No somos una fábrica de software. Somos arquitectos de soluciones digitales.
-                            Cada línea de código y cada píxel tiene una intención clara: <span className="text-neutral-900 dark:text-neutral-50 font-normal">resolver problemas complejos con simplicidad elegante.</span>
+                            Cada línea de código y cada píxel tiene una intención clara: <span className="text-slate-900 font-normal">resolver problemas complejos con simplicidad elegante.</span>
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-sm uppercase tracking-wider mb-6 text-neutral-400 font-mono">Método</h2>
-                        <div className="grid grid-cols-1 gap-8 border-t border-neutral-200 dark:border-neutral-800 pt-8">
+                        <h2 className="text-sm uppercase tracking-wider mb-6 text-slate-400 font-mono">Método</h2>
+                        <div className="grid grid-cols-1 gap-8 border-t border-slate-200 pt-8">
                             {[
                                 { title: '01. Inmersión', desc: 'Entendemos el negocio, no solo los requisitos.' },
                                 { title: '02. Arquitectura', desc: 'Diseñamos sistemas escalables, no parches.' },
@@ -37,18 +37,18 @@ export default function StudioPage() {
                             ].map((step) => (
                                 <div key={step.title} className="group">
                                     <h3 className="text-lg font-medium mb-2">{step.title}</h3>
-                                    <p className="text-neutral-500">{step.desc}</p>
+                                    <p className="text-slate-500">{step.desc}</p>
                                 </div>
                             ))}
                         </div>
                     </section>
 
                     <section>
-                        <h2 className="text-sm uppercase tracking-wider mb-6 text-neutral-400 font-mono">Stack & Tecnología</h2>
-                        <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
+                        <h2 className="text-sm uppercase tracking-wider mb-6 text-slate-400 font-mono">Stack & Tecnología</h2>
+                        <p className="text-lg text-slate-600 mb-8">
                             Elegimos tecnologías probadas y robustas que garantizan rendimiento y mantenibilidad a largo plazo.
                         </p>
-                        <ul className="grid grid-cols-2 gap-4 font-mono text-sm text-neutral-500">
+                        <ul className="grid grid-cols-2 gap-4 font-mono text-sm text-slate-500">
                             <li>Next.js / React</li>
                             <li>TypeScript</li>
                             <li>Python / Django</li>
@@ -61,7 +61,7 @@ export default function StudioPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-sm uppercase tracking-wider mb-6 text-neutral-400 font-mono">Clientes</h2>
+                        <h2 className="text-sm uppercase tracking-wider mb-6 text-slate-400 font-mono">Clientes</h2>
                         <p className="text-xl font-light">
                             Trabajamos con empresas que ven la tecnología como una ventaja competitiva, desde startups fintech hasta corporaciones industriales.
                         </p>

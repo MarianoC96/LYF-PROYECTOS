@@ -32,7 +32,7 @@ export default function RootLayout({
         className={cn(
           inter.variable,
           outfit.variable,
-          "antialiased bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50"
+          "antialiased bg-slate-50 text-slate-900"
         )}
       >
         <SmoothScroll>

@@ -21,7 +21,7 @@ export default function ProjectsPage() {
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 font-outfit">
                         Selected Work
                     </h1>
-                    <p className="text-neutral-500 max-w-md">
+                    <p className="text-slate-500 max-w-md">
                         Una colección de desafíos técnicos resueltos con precisión y arquitectura escalable.
                     </p>
                 </div>
@@ -32,8 +32,8 @@ export default function ProjectsPage() {
                             key={filter}
                             onClick={() => setActiveFilter(filter)}
                             className={`text-sm uppercase tracking-wider px-4 py-2 rounded-full border transition-all whitespace-nowrap ${activeFilter === filter
-                                ? 'bg-neutral-900 text-white border-neutral-900 dark:bg-white dark:text-black dark:border-white'
-                                : 'bg-transparent text-neutral-500 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400'
+                                ? 'bg-slate-900 text-white border-slate-900'
+                                : 'bg-transparent text-slate-500 border-slate-200 hover:border-slate-400'
                                 }`}
                         >
                             {filter}

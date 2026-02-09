@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 // This wrapper ensures the dynamic import happens in a client context
 const CanvasHero = dynamic(() => import('./CanvasHero'), {
     ssr: false,
-    loading: () => <div className="h-screen w-full bg-neutral-950" />
+    loading: () => <div className="h-screen w-full bg-slate-50" />
 });
 
 export default function HeroWrapper() {

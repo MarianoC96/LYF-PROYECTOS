@@ -55,28 +55,28 @@ export default function JournalPage() {
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 font-outfit">
                     Journal
                 </h1>
-                <p className="text-neutral-500">
+                <p className="text-slate-500">
                     Reflexiones sobre ingeniería, diseño y la intersección entre ambos.
                 </p>
             </div>
 
-            <div className="border-t border-neutral-200 dark:border-neutral-800">
+            <div className="border-t border-slate-200">
                 {articles.map((article) => (
                     <Link key={article.id} href={`/journal/${article.id}`} className="group block">
-                        <article className="grid grid-cols-1 md:grid-cols-12 py-8 border-b border-neutral-100 dark:border-neutral-900 transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-900 px-4 -mx-4 rounded-lg">
-                            <div className="md:col-span-2 text-sm font-mono text-neutral-400 py-1">
+                        <article className="grid grid-cols-1 md:grid-cols-12 py-8 border-b border-slate-100 transition-colors hover:bg-slate-50 px-4 -mx-4 rounded-lg">
+                            <div className="md:col-span-2 text-sm font-mono text-slate-400 py-1">
                                 {article.date}
                             </div>
                             <div className="md:col-span-12 lg:col-span-7">
-                                <h2 className="text-xl md:text-2xl font-medium mb-2 group-hover:text-neutral-600 transition-colors">
+                                <h2 className="text-xl md:text-2xl font-medium mb-2 group-hover:text-slate-600 transition-colors">
                                     {article.title}
                                 </h2>
-                                <p className="text-neutral-500 dark:text-neutral-400 font-light">
+                                <p className="text-slate-500 font-light">
                                     {article.excerpt}
                                 </p>
                             </div>
                             <div className="md:col-span-3 lg:col-span-3 flex justify-start md:justify-end items-start py-1 mt-4 md:mt-0">
-                                <span className="text-xs uppercase tracking-wider border border-neutral-200 dark:border-neutral-800 px-2 py-1 rounded-full text-neutral-500">
+                                <span className="text-xs uppercase tracking-wider border border-slate-200 px-2 py-1 rounded-full text-slate-500">
                                     {article.tag}
                                 </span>
                             </div>

@@ -16,7 +16,7 @@ export default function Header() {
     const pathname = usePathname();
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50 mix-blend-difference text-white py-6 px-6 md:px-12 flex justify-between items-center bg-transparent pointer-events-none">
+        <header className="fixed top-0 left-0 w-full z-50 text-slate-900 py-6 px-6 md:px-12 flex justify-between items-center bg-transparent pointer-events-none">
             <Link href="/" className="text-lg font-bold tracking-tight pointer-events-auto">
                 lyf proyectos
             </Link>
@@ -37,7 +37,7 @@ export default function Header() {
                             {isActive && (
                                 <motion.div
                                     layoutId="underline"
-                                    className="absolute -bottom-1 left-0 w-full h-[1px] bg-white"
+                                    className="absolute -bottom-1 left-0 w-full h-[1px] bg-slate-900"
                                 />
                             )}
                         </Link>
