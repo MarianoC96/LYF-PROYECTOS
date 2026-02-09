@@ -1,11 +1,10 @@
 import Image from "next/image";
-
-import CanvasHero from "./components/CanvasHero";
+import HeroWrapper from "./components/HeroWrapper";
 
 export default function Home() {
   return (
     <div className="bg-neutral-50 dark:bg-neutral-950 min-h-screen">
-      <CanvasHero />
+      <HeroWrapper />
 
       <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="max-w-2xl">

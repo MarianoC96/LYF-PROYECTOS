@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useScroll, useMotionValueEvent } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-export default function CanvasHero() {
+const DesktopCanvas = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const [frames, setFrames] = useState<string[]>([]);
@@ -56,8 +56,6 @@ export default function CanvasHero() {
                 }
             };
             img.onerror = () => {
-                // Handle error, maybe skip frame?
-                // For now just count it as loaded to avoid blocking
                 loaded++;
                 setLoadedCount(loaded);
                 if (loaded === frames.length) {
@@ -87,7 +85,6 @@ export default function CanvasHero() {
             const iw = img.width;
             const ih = img.height;
 
-            // Object-fit: cover logic
             const scale = Math.max(cw / iw, ch / ih);
             const x = (cw - iw * scale) / 2;
             const y = (ch - ih * scale) / 2;
@@ -125,7 +122,6 @@ export default function CanvasHero() {
     }, [isLoading, error, images, scrollYProgress, frames.length]);
 
     if (error) {
-        // Fallback if no frames
         return (
             <div className="h-screen w-full bg-neutral-900 flex items-center justify-center text-neutral-500">
                 <p>Visual assets not available</p>
@@ -142,9 +138,41 @@ export default function CanvasHero() {
                     </div>
                 )}
                 <canvas ref={canvasRef} className="w-full h-full block" />
-
-                {/* Optional: Overlay text that fades out? Prompt says "El hero NO lleva texto encima". */}
             </div>
         </div>
     );
+};
+
+export default function CanvasHero() {
+    const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    if (isMobile === null) {
+        return <div className="h-screen w-full bg-neutral-950" />;
+    }
+
+    if (isMobile) {
+        return (
+            <div className="h-screen w-full relative bg-neutral-950 overflow-hidden">
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src="/VideoHero.mp4"
+                />
+            </div>
+        );
+    }
+
+    return <DesktopCanvas />;
 }
