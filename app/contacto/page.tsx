@@ -7,7 +7,7 @@ export default function ContactPage() {
 
                 <div>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 font-outfit">
-                        Contact
+                        Contacto
                     </h1>
                     <p className="text-xl text-slate-600 max-w-md leading-relaxed mb-12">
                         Iniciemos una conversación sobre su próximo desafío técnico. Sin compromiso, con total confidencialidad.
@@ -21,7 +21,7 @@ export default function ContactPage() {
                             </a>
                         </div>
                         <div>
-                            <p className="uppercase tracking-wider text-slate-400 mb-1">Office</p>
+                            <p className="uppercase tracking-wider text-slate-400 mb-1">Oficina</p>
                             <p className="text-slate-900">
                                 Madrid, España
                             </p>

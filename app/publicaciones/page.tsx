@@ -22,7 +22,7 @@ const articles = [
         id: 'nextjs-performance',
         title: 'Optimizando Core Web Vitals en aplicaciones enterprise',
         excerpt: 'Técnicas avanzadas de rendering y gestión de assets en Next.js.',
-        date: 'Aug 2025',
+        date: 'Ago 2025',
         tag: 'Frontend'
     },
     {
@@ -53,7 +53,7 @@ export default function JournalPage() {
         <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1920px] mx-auto">
             <div className="max-w-2xl mb-16">
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 font-outfit">
-                    Journal
+                    Publicaciones
                 </h1>
                 <p className="text-slate-500">
                     Reflexiones sobre ingeniería, diseño y la intersección entre ambos.
@@ -62,7 +62,7 @@ export default function JournalPage() {
 
             <div className="border-t border-slate-200">
                 {articles.map((article) => (
-                    <Link key={article.id} href={`/journal/${article.id}`} className="group block">
+                    <Link key={article.id} href={`/publicaciones/${article.id}`} className="group block">
                         <article className="grid grid-cols-1 md:grid-cols-12 py-8 border-b border-slate-100 transition-colors hover:bg-slate-50 px-4 -mx-4 rounded-lg">
                             <div className="md:col-span-2 text-sm font-mono text-slate-400 py-1">
                                 {article.date}

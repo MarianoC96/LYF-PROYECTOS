@@ -124,7 +124,7 @@ const DesktopCanvas = () => {
     if (error) {
         return (
             <div className="h-screen w-full bg-slate-50 flex items-center justify-center text-slate-500">
-                <p>Visual assets not available</p>
+                <p>Recursos visuales no disponibles</p>
             </div>
         );
     }
@@ -134,7 +134,7 @@ const DesktopCanvas = () => {
             <div className="sticky top-0 h-screen w-full overflow-hidden">
                 {isLoading && (
                     <div className="absolute inset-0 flex items-center justify-center z-10 bg-slate-50 text-slate-900 font-mono text-sm">
-                        Loading System... {Math.round((loadedCount / (frames.length || 1)) * 100)}%
+                        Cargando Sistema... {Math.round((loadedCount / (frames.length || 1)) * 100)}%
                     </div>
                 )}
                 <canvas ref={canvasRef} className="w-full h-full block" />

@@ -17,7 +17,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "lyf proyectos | Software Studio",
+  title: "lyf proyectos | Estudio de Software",
   description: "Desarrollo de software e inteligencia artificial. Partner tecnológico para empresas.",
 };
 

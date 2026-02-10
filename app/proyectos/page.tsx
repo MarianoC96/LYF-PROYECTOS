@@ -19,7 +19,7 @@ export default function ProjectsPage() {
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                 <div>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 font-outfit">
-                        Selected Work
+                        Proyectos Seleccionados
                     </h1>
                     <p className="text-slate-500 max-w-md">
                         Una colección de desafíos técnicos resueltos con precisión y arquitectura escalable.

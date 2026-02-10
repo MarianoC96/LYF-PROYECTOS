@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-    { name: 'Projects', href: '/projects' },
-    { name: 'Studio', href: '/studio' },
-    { name: 'Journal', href: '/journal' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Proyectos', href: '/proyectos' },
+    { name: 'Estudio', href: '/estudio' },
+    { name: 'Publicaciones', href: '/publicaciones' },
+    { name: 'Contacto', href: '/contacto' },
 ];
 
 export default function Header() {
@@ -48,7 +48,7 @@ export default function Header() {
             {/* Mobile Menu Trigger would go here */}
             <div className="md:hidden pointer-events-auto">
                 {/* Simple placeholder for mobile menu */}
-                <span className="text-sm uppercase">Menu</span>
+                <span className="text-sm uppercase">Menú</span>
             </div>
         </header>
     );

@@ -15,7 +15,7 @@ interface Project {
 
 export default function ProjectCard({ project }: { project: Project }) {
     return (
-        <Link href={`/projects/${project.id}`} className="group block">
+        <Link href={`/proyectos/${project.id}`} className="group block">
             <div className="relative aspect-[4/3] overflow-hidden bg-slate-200 mb-4">
                 {/* Image placeholder or real image */}
                 {project.image ? (

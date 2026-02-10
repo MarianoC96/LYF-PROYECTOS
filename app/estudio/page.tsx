@@ -10,7 +10,7 @@ export default function StudioPage() {
                 {/* Enfoque */}
                 <div className="md:sticky md:top-32 h-fit">
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 font-outfit">
-                        Studio
+                        Estudio
                     </h1>
                     <p className="text-xl text-slate-600 max-w-md leading-relaxed">
                         Somos un equipo de ingenieros y diseñadores obsesionados con la calidad técnica y la claridad visual.
@@ -44,7 +44,7 @@ export default function StudioPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-sm uppercase tracking-wider mb-6 text-slate-400 font-mono">Stack & Tecnología</h2>
+                        <h2 className="text-sm uppercase tracking-wider mb-6 text-slate-400 font-mono">Tecnología</h2>
                         <p className="text-lg text-slate-600 mb-8">
                             Elegimos tecnologías probadas y robustas que garantizan rendimiento y mantenibilidad a largo plazo.
                         </p>
