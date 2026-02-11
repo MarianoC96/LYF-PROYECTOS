@@ -15,7 +15,7 @@ export default function ProjectsPage() {
     );
 
     return (
-        <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1920px] mx-auto">
+        <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1920px] mx-auto overflow-hidden">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                 <div>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 font-outfit">
@@ -26,7 +26,7 @@ export default function ProjectsPage() {
                     </p>
                 </div>
 
-                <div className="flex gap-4 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+                <div className="flex gap-4 overflow-x-auto pb-2 md:pb-0 w-full max-w-full">
                     {filters.map((filter) => (
                         <button
                             key={filter}
