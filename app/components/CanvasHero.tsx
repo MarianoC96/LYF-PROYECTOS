@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useScroll, useMotionValueEvent } from 'framer-motion';
 import { cn } from '@/lib/utils';
+
+const LERP_FACTOR = 0.08;
 
 const DesktopCanvas = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -13,10 +14,11 @@ const DesktopCanvas = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"],
-    });
+    // Refs for smooth animation loop
+    const currentFrameRef = useRef(0);
+    const targetFrameRef = useRef(0);
+    const animationIdRef = useRef<number>(0);
+    const lastRenderedFrameRef = useRef(-1);
 
     // Fetch manifest
     useEffect(() => {
@@ -67,16 +69,20 @@ const DesktopCanvas = () => {
         setImages(imgs);
     }, [frames]);
 
-    // Render logic
+    // Smooth render loop with lerp + manual scroll tracking
     useEffect(() => {
         if (isLoading || error || images.length === 0) return;
 
         const canvas = canvasRef.current;
-        if (!canvas) return;
+        const container = containerRef.current;
+        if (!canvas || !container) return;
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
         const render = (index: number) => {
+            if (index === lastRenderedFrameRef.current) return;
+            lastRenderedFrameRef.current = index;
+
             const img = images[index];
             if (!img) return;
 
@@ -96,48 +102,80 @@ const DesktopCanvas = () => {
         const handleResize = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            const progress = scrollYProgress.get();
-            const index = Math.min(
-                frames.length - 1,
-                Math.floor(progress * frames.length)
+            lastRenderedFrameRef.current = -1;
+            render(Math.round(currentFrameRef.current));
+        };
+
+        // Calculate scroll progress manually (works with Lenis)
+        const getScrollProgress = () => {
+            const rect = container.getBoundingClientRect();
+            const containerHeight = container.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            // scrollable distance = container height - viewport height
+            const scrollableDistance = containerHeight - viewportHeight;
+            if (scrollableDistance <= 0) return 0;
+
+            // rect.top starts at 0 when container top is at viewport top
+            // and goes negative as we scroll down
+            const scrolled = -rect.top;
+            const progress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
+            return progress;
+        };
+
+        // Continuous animation loop with lerp interpolation
+        const animate = () => {
+            // Update target based on current scroll position
+            const progress = getScrollProgress();
+            targetFrameRef.current = progress * (images.length - 1);
+
+            const current = currentFrameRef.current;
+            const target = targetFrameRef.current;
+
+            const diff = target - current;
+            if (Math.abs(diff) > 0.01) {
+                currentFrameRef.current += diff * LERP_FACTOR;
+            } else {
+                currentFrameRef.current = target;
+            }
+
+            const frameIndex = Math.min(
+                images.length - 1,
+                Math.max(0, Math.round(currentFrameRef.current))
             );
-            render(index);
+            render(frameIndex);
+
+            animationIdRef.current = requestAnimationFrame(animate);
         };
 
         window.addEventListener('resize', handleResize);
         handleResize();
 
-        const unsubscribe = scrollYProgress.on("change", (latest) => {
-            const index = Math.min(
-                frames.length - 1,
-                Math.floor(latest * frames.length)
-            );
-            requestAnimationFrame(() => render(index));
-        });
+        // Start the animation loop
+        animationIdRef.current = requestAnimationFrame(animate);
 
         return () => {
             window.removeEventListener('resize', handleResize);
-            unsubscribe();
+            cancelAnimationFrame(animationIdRef.current);
         };
-    }, [isLoading, error, images, scrollYProgress, frames.length]);
+    }, [isLoading, error, images]);
 
     if (error) {
         return (
-            <div className="h-screen w-full bg-slate-50 flex items-center justify-center text-slate-500">
+            <div className="h-[80vh] w-full bg-slate-50 flex items-center justify-center text-slate-500">
                 <p>Recursos visuales no disponibles</p>
             </div>
         );
     }
 
     return (
-        <div ref={containerRef} className="h-[400vh] relative bg-slate-50">
-            <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <div ref={containerRef} className="h-[300vh] relative bg-slate-50 z-0">
+            <div className="sticky top-0 h-screen w-full overflow-hidden bg-slate-50">
                 {isLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center z-10 bg-slate-50 text-slate-900 font-mono text-sm">
+                    <div className="absolute inset-0 flex items-center justify-center z-20 bg-slate-50 text-slate-900 font-mono text-sm">
                         Cargando Sistema... {Math.round((loadedCount / (frames.length || 1)) * 100)}%
                     </div>
                 )}
-                <canvas ref={canvasRef} className="w-full h-full block" />
+                <canvas ref={canvasRef} className="w-full h-full block relative z-10" />
             </div>
         </div>
     );
@@ -156,12 +194,12 @@ export default function CanvasHero() {
     }, []);
 
     if (isMobile === null) {
-        return <div className="h-screen w-full bg-slate-50" />;
+        return <div className="h-[80vh] w-full bg-slate-50" />;
     }
 
     if (isMobile) {
         return (
-            <div className="h-screen w-full relative bg-slate-50 overflow-hidden">
+            <div className="h-[80vh] w-full relative bg-slate-50 overflow-hidden">
                 <video
                     autoPlay
                     muted

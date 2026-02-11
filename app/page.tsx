@@ -6,7 +6,7 @@ export default function Home() {
     <div className="bg-slate-50 min-h-screen">
       <HeroWrapper />
 
-      <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <section className="bg-slate-50 py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="max-w-2xl">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 font-outfit">
             Construimos el futuro del software.

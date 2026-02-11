@@ -37,7 +37,7 @@ export default function RootLayout({
       >
         <SmoothScroll>
           <Header />
-          <main className="min-h-screen flex flex-col overflow-x-hidden">
+          <main className="min-h-screen flex flex-col">
             {children}
           </main>
           <Footer />
