@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
+  },
   async headers() {
     return [
       {
@@ -32,9 +40,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            // Allow scripts from self and inline (Next.js needs 'unsafe-inline' and 'unsafe-eval' in dev)
-            // In production we should be stricter, but this is a good baseline to fix the report
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' data:; connect-src 'self';"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://cdn.sanity.io; font-src 'self' data:; connect-src 'self' https://*.sanity.io https://*.api.sanity.io wss://*.sanity.io https://registry.npmjs.org;"
           }
         ],
       },
