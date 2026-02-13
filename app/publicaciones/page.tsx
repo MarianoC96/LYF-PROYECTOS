@@ -13,7 +13,7 @@ interface SanityArticle {
     mainImage?: any;
 }
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 async function getArticles() {
     const raw: SanityArticle[] = await client.fetch(articlesQuery);
