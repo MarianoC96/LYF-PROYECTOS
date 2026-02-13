@@ -6,8 +6,8 @@ export default defineConfig({
     name: 'default',
     title: 'LYF Proyectos — Publicaciones',
 
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+    projectId: (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'p3q35zpu').trim(),
+    dataset: (process.env.NEXT_PUBLIC_SANITY_DATASET || 'production').trim(),
 
     basePath: '/admin',
 
